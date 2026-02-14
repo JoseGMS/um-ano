@@ -1,0 +1,21 @@
+# Ignorar tudo fora da pasta do projeto
+/**/
+!umano/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Ano de Nós 💕</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading">
+        <div class="heart-loader">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path id="heart-path" d="M50,90 C50,90 10,60 10,35 C10,20 20,10 30,10 C40,10 50,20 50,20 C50,20 60,10 70,10 C80,10 90,20 90,35 C90,60 50,90 50,90 Z" fill="none" stroke="#ff6b9d" stroke-width="2"/>
+                <path id="heart-fill" d="M50,90 C50,90 10,60 10,35 C10,20 20,10 30,10 C40,10 50,20 50,20 C50,20 60,10 70,10 C80,10 90,20 90,35 C90,60 50,90 50,90 Z" fill="#ff6b9d"/>
+            </svg>
+            <p>Preparando nossa história...</p>
+        </div>
+    </div>
+
+    <!-- Background Canvas para Three.js -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Seção 1: Intro -->
+    <section id="intro" class="section">
+        <div class="container">
+            <div id="coffee-3d"></div>
+            <h1 class="glitch" data-text="Tudo começou com café...">Tudo começou com café...</h1>
+            <p class="subtitle fade-in">Ela me chamou para falar de café...</p>
+            <p class="subtitle fade-in delay-1">Mas o destino tinha outros planos.</p>
+            <div class="scroll-indicator">
+                <span>Role para descobrir</span>
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 2: O Café -->
+    <section id="cafe" class="section">
+        <div class="container">
+            <div class="chapter-number">Capítulo 1</div>
+            <h2 class="section-title">O Café que Mudou Tudo</h2>
+            <div class="content-card card-3d">
+                <p class="story-text">
+                    Foi por causa de um café. Um simples convite para conversar sobre grãos, métodos e aromas.
+                    Mas quando nossos olhares se encontraram pela primeira vez, eu soube que aquele café
+                    seria apenas o primeiro de muitos momentos juntos.
+                </p>
+                <p class="story-text highlight">
+                    E hoje? Hoje eu tomo o <strong>melhor café do mundo</strong> - o que você faz. ☕
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 3: Escape Room -->
+    <section id="escape-room" class="section dark">
+        <div class="container">
+            <div class="chapter-number">Capítulo 2</div>
+            <h2 class="section-title">Escape Room: O Primeiro Olhar</h2>
+            <div class="photo-3d-container">
+                <div class="photo-card parallax-card">
+                    <img src="fotos/20250427_183934.jpg" alt="Escape Room" class="photo-main">
+                    <div class="photo-overlay">
+                        <p class="photo-caption">A primeira vez que nos vimos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-card card-3d">
+                <p class="story-text">
+                    Presos em uma sala, buscando pistas para escapar. Mas o verdadeiro enigma começava ali:
+                    como alguém tão incrível tinha acabado de entrar na minha vida?
+                </p>
+                <div class="lock-animation">
+                    <span class="lock-icon">🔓</span>
+                    <p class="lock-text">Corações destrancados</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 4: A Praia -->
+    <section id="praia" class="section beach">
+        <div class="container">
+            <div class="chapter-number">Capítulo 3</div>
+            <h2 class="section-title">A Praia: Onde Tudo Se Aproximou</h2>
+            <div class="waves-container">
+                <div class="wave wave1"></div>
+                <div class="wave wave2"></div>
+                <div class="wave wave3"></div>
+            </div>
+            <div class="photo-grid">
+                <div class="photo-item photo-tilt">
+                    <img src="fotos/20250427_184055.jpg" alt="Praia momento 1">
+                </div>
+                <div class="photo-item photo-tilt">
+                    <img src="fotos/20250515_221224.jpg" alt="Praia momento 2">
+                </div>
+            </div>
+            <div class="content-card card-3d">
+                <p class="story-text">
+                    O som das ondas, a brisa do mar, e nós dois descobrindo que estávamos no lugar certo,
+                    no momento certo, com a pessoa certa. Foi ali, entre risadas e conversas,
+                    que a distância começou a diminuir e os corações a se aproximar.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 5: Primeiro Encontro -->
+    <section id="primeiro-encontro" class="section">
+        <div class="container">
+            <div class="chapter-number">Capítulo 4</div>
+            <h2 class="section-title">O Primeiro Encontro do Pobre Juan</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content card-3d">
+                        <h3>O Nervosismo</h3>
+                        <p>Eu, tentando parecer confiante, mas por dentro um caos total.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content card-3d">
+                        <h3>A Tentativa de Convencer</h3>
+                        <p>"Vamos subir?" - Eu tentando ser casual enquanto meu coração batia acelerado.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content card-3d">
+                        <h3>A História do Meu Pai</h3>
+                        <p>E aí, quase sem querer, contei como meu pai conheceu a Karin.
+                           Uma história de amor que me inspira até hoje.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="photo-3d-container">
+                <div class="photo-card parallax-card">
+                    <img src="fotos/20250426_191852.jpg" alt="Primeiro encontro">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 6: Ubatuba -->
+    <section id="ubatuba" class="section dark">
+        <div class="container">
+            <div class="chapter-number">Capítulo 5</div>
+            <h2 class="section-title">Ubatuba: Aventuras Começam</h2>
+            <div class="carousel-3d">
+                <div class="carousel-container">
+                    <div class="carousel-item"><img src="fotos/20250705_224040.jpg" alt="Ubatuba 1"></div>
+                    <div class="carousel-item"><img src="fotos/20250705_224324.jpg" alt="Ubatuba 2"></div>
+                    <div class="carousel-item"><img src="fotos/20250831_153744.jpg" alt="Ubatuba 3"></div>
+                </div>
+                <button class="carousel-btn prev">‹</button>
+                <button class="carousel-btn next">›</button>
+            </div>
+            <div class="content-card card-3d">
+                <p class="story-text">
+                    Nossa primeira grande viagem juntos. Cada praia explorada, cada risada compartilhada,
+                    cada momento capturado - tudo construindo memórias que vão durar para sempre.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 7: Vinhedo -->
+    <section id="vinhedo" class="section">
+        <div class="container">
+            <div class="chapter-number">Capítulo 6</div>
+            <h2 class="section-title">Vinhedo e a "Padaria"</h2>
+            <div class="content-card card-3d interactive-card">
+                <p class="story-text">
+                    Fomos até Vinhedo para ir em uma <span class="easter-egg" id="padaria-egg">"padaria"</span>
+                    muito especial. 🥐
+                </p>
+                <div id="padaria-secret" class="secret-reveal">
+                    <p>😏 Bom, a padaria era especial mesmo... mas o melhor foi estar com você!</p>
+                </div>
+                <div class="photo-3d-container">
+                    <div class="photo-card parallax-card">
+                        <img src="fotos/20250906_190102.jpg" alt="Vinhedo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 8: Apoio nos Momentos Difíceis -->
+    <section id="apoio" class="section emotional">
+        <div class="container">
+            <div class="chapter-number">Capítulo 7</div>
+            <h2 class="section-title">Meu Porto Seguro</h2>
+            <div class="embrace-animation">
+                <div class="heart-particles"></div>
+            </div>
+            <div class="content-card card-3d">
+                <p class="story-text highlight">
+                    Teve um momento em que eu fiquei louco. O mundo parecia desabar,
+                    mas você estava lá. Firme. Forte. Me apoiando.
+                </p>
+                <p class="story-text">
+                    Você foi meu porto seguro quando as ondas tentaram me levar.
+                    Me mostrou que não importa a tempestade, juntos conseguimos atravessar.
+                </p>
+                <p class="story-text">
+                    Por isso e por tanto mais: <strong>obrigado</strong>. 💙
+                </p>
+            </div>
+            <div class="photo-3d-container">
+                <div class="photo-card parallax-card">
+                    <img src="fotos/20250927_183058.jpg" alt="Apoio">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 9: Chalezinho -->
+    <section id="chalezinho" class="section dark">
+        <div class="container">
+            <div class="chapter-number">Capítulo 8</div>
+            <h2 class="section-title">Chalezinho: 3 Meses de Amor</h2>
+            <div id="cabin-3d"></div>
+            <div class="photo-grid">
+                <div class="photo-item photo-tilt">
+                    <img src="fotos/20250927_211304.jpg" alt="Chalezinho 1">
+                </div>
+                <div class="photo-item photo-tilt">
+                    <img src="fotos/20251018_110826.jpg" alt="Chalezinho 2">
+                </div>
+            </div>
+            <div class="content-card card-3d">
+                <p class="story-text">
+                    Apenas três meses juntos e já vivendo momentos tão especiais.
+                    O chalezinho foi nosso refúgio, nosso cantinho de paz,
+                    onde o tempo parecia parar só para nós.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 10: Jogo do Rival -->
+    <section id="jogo" class="section">
+        <div class="container">
+            <div class="chapter-number">Capítulo 9</div>
+            <h2 class="section-title">Rival no Estádio, Parceira na Vida</h2>
+            <div id="ball-3d"></div>
+            <div class="content-card card-3d">
+                <p class="story-text">
+                    Ela torce pro rival. SIM, PRO RIVAL! Mas sabe o que é incrível?
+                    Ela foi ao jogo do MEU time comigo. Vibrou, torceu, viveu aquele momento ao meu lado.
+                </p>
+                <p class="story-text highlight">
+                    Porque amor de verdade é sobre estar presente,
+                    mesmo quando a camisa é de outra cor. ⚽
+                </p>
+            </div>
+            <div class="photo-3d-container">
+                <div class="photo-card parallax-card">
+                    <img src="fotos/20251115_220013.jpg" alt="Jogo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 11: Tributo -->
+    <section id="tributo" class="section tributo">
+        <div class="container">
+            <div class="chapter-number">♥</div>
+            <h2 class="section-title">Você</h2>
+            <div id="particles-heart"></div>
+
+            <div class="tributes-grid">
+                <div class="tribute-card card-3d">
+                    <span class="tribute-icon">✨</span>
+                    <h3>Linda</h3>
+                    <p>Não apenas por fora, mas pela luz que você carrega dentro de você</p>
+                </div>
+                <div class="tribute-card card-3d">
+                    <span class="tribute-icon">☕</span>
+                    <h3>O Melhor Café</h3>
+                    <p>Literalmente. Você faz o melhor café do mundo.</p>
+                </div>
+                <div class="tribute-card card-3d">
+                    <span class="tribute-icon">🤝</span>
+                    <h3>Companheirismo</h3>
+                    <p>Minha parceira em todas as aventuras, grandes e pequenas</p>
+                </div>
+                <div class="tribute-card card-3d">
+                    <span class="tribute-icon">💪</span>
+                    <h3>Apoio</h3>
+                    <p>Meu suporte nos dias difíceis, minha celebração nos dias bons</p>
+                </div>
+                <div class="tribute-card card-3d">
+                    <span class="tribute-icon">😂</span>
+                    <h3>Risadas</h3>
+                    <p>Você transforma dias comuns em momentos especiais</p>
+                </div>
+                <div class="tribute-card card-3d">
+                    <span class="tribute-icon">❤️</span>
+                    <h3>Amor</h3>
+                    <p>Puro, verdadeiro e cada dia mais forte</p>
+                </div>
+            </div>
+
+            <div class="photo-gallery">
+                <div class="gallery-item"><img src="fotos/20251224_195510.jpg" alt="Momento 1"></div>
+                <div class="gallery-item"><img src="fotos/20251231_163119.jpg" alt="Momento 2"></div>
+                <div class="gallery-item"><img src="fotos/20260111_174556.jpg" alt="Momento 3"></div>
+                <div class="gallery-item"><img src="fotos/20260131_104941.jpg" alt="Momento 4"></div>
+                <div class="gallery-item"><img src="fotos/20260131_145130.jpg" alt="Momento 5"></div>
+                <div class="gallery-item"><img src="fotos/IMG-20250309-WA0007.jpg" alt="Momento 6"></div>
+                <div class="gallery-item"><img src="fotos/IMG-20251214-WA0006.jpg" alt="Momento 7"></div>
+                <div class="gallery-item"><img src="fotos/IMG-20260131-WA0057.jpg" alt="Momento 8"></div>
+                <div class="gallery-item"><img src="fotos/20251215_201347.jpg" alt="Momento 9"></div>
+            </div>
+
+            <div class="content-card card-3d final-message">
+                <p class="story-text centered">
+                    Por tudo isso e por tanto mais que nem consigo colocar em palavras...
+                </p>
+                <h2 class="gratitude">Obrigado por ser você. Obrigado por esse ano incrível.</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 12: Revelação do Presente -->
+    <section id="revelacao" class="section dark revelacao">
+        <div class="container">
+            <div class="spotlight"></div>
+            <h2 class="section-title reveal-title">E agora...</h2>
+            <p class="reveal-subtitle">Chegou a hora de revelar seu presente! 🎁</p>
+
+            <div class="music-challenge">
+                <h3 class="music-title">Complete a música:</h3>
+                <div class="lyrics">
+                    <p>"Deus tava me preparando esse tempo todo</p>
+                    <p>Te deixou pro final</p>
+                    <p>Tava esconde o</p>
+                </div>
+
+                <div class="word-input">
+                    <input type="text" maxlength="1" class="letter-input" data-index="0">
+                    <input type="text" maxlength="1" class="letter-input" data-index="1">
+                    <input type="text" maxlength="1" class="letter-input" data-index="2">
+                    <input type="text" maxlength="1" class="letter-input" data-index="3">
+                </div>
+
+                <button id="check-answer" class="btn-reveal">Revelar Presente</button>
+                <p class="hint">💡 Dica: 4 letras, algo precioso...</p>
+            </div>
+
+            <div id="present-reveal" class="present-container hidden">
+                <div class="present-content">
+                    <!-- Ícones animados -->
+                    <div class="present-icons animate-in">
+                        <span class="icon-animated">✈️</span>
+                        <span class="icon-animated">🏝️</span>
+                        <span class="icon-animated">🌅</span>
+                    </div>
+
+                    <h2 class="present-title animate-in delay-1">🎉 SEU PRESENTE! 🎉</h2>
+                    <h1 class="destination animate-in delay-2">LENÇÓIS MARANHENSES</h1>
+
+                    <p class="present-intro animate-in delay-3">
+                        Eu sei que você já sabe que vamos viajar...<br>
+                        Mas agora vem a melhor parte:
+                    </p>
+
+                    <div class="present-details animate-in delay-4">
+                        <div class="detail-card gift-highlight">
+                            <span class="detail-icon">✈️</span>
+                            <h3>Passagem IDA E VOLTA</h3>
+                            <p class="gift-text">Totalmente PAGA por mim! 🎁</p>
+                        </div>
+                        <div class="detail-card gift-highlight">
+                            <span class="detail-icon">🏨</span>
+                            <h3>Hospedagem COMPLETA</h3>
+                            <p class="gift-text">Totalmente PAGA por mim! 🎁</p>
+                        </div>
+                        <div class="detail-card">
+                            <span class="detail-icon">🏝️</span>
+                            <h3>Nossa Aventura</h3>
+                            <p>Dunas, lagoas cristalinas e pôr do sol!</p>
+                        </div>
+                    </div>
+
+                    <!-- Mapa SVG responsivo -->
+                    <div class="travel-map animate-in delay-5">
+                        <svg viewBox="0 0 400 200" class="map-svg">
+                            <defs>
+                                <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#ff6b9d;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#6bcfff;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Caminho da viagem -->
+                            <path d="M 50 150 Q 200 50 350 150" stroke="url(#pathGradient)" stroke-width="3" fill="none" stroke-dasharray="1000" stroke-dashoffset="1000" class="travel-path"/>
+                            <!-- Ponto de partida -->
+                            <circle cx="50" cy="150" r="6" fill="#ff6b9d">
+                                <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Ponto de chegada -->
+                            <circle cx="350" cy="150" r="6" fill="#6bcfff">
+                                <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Avião -->
+                            <text x="50" y="155" font-size="20" class="plane-icon">✈️</text>
+                            <!-- Labels -->
+                            <text x="50" y="175" text-anchor="middle" fill="white" font-size="12">São Paulo</text>
+                            <text x="350" y="175" text-anchor="middle" fill="white" font-size="12">Lençóis</text>
+                        </svg>
+                    </div>
+
+                    <!-- Dunas ilustradas -->
+                    <div class="dunes-illustration animate-in delay-6">
+                        <div class="dune dune-1"></div>
+                        <div class="dune dune-2"></div>
+                        <div class="dune dune-3"></div>
+                        <div class="lagoon"></div>
+                    </div>
+
+                    <p class="present-message animate-in delay-5">
+                        <strong>PASSAGEM + HOSPEDAGEM = MEU PRESENTE PARA VOCÊ! 💙</strong><br><br>
+                        Vamos viver essa aventura juntos! 🌅<br>
+                        Nosso próximo capítulo começa nos Lençóis Maranhenses!
+                    </p>
+
+                    <div class="hearts-float">
+                        <span class="float-heart">💙</span>
+                        <span class="float-heart">💙</span>
+                        <span class="float-heart">💙</span>
+                        <span class="float-heart">💙</span>
+                        <span class="float-heart">💙</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="counter">
+            <p>Juntos há <span id="days-counter">365</span> dias incríveis</p>
+        </div>
+        <p class="footer-text">Um ano de amor, risos e café ☕💕</p>
+        <p class="footer-signature">Feito com muito amor por Radamar</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
